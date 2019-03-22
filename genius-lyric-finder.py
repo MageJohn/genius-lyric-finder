@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 import os.path
+from urllib.parse import unquote
 import lyricsgenius
 
 ACCESS_TOKEN = "access_token.txt"
@@ -17,13 +18,13 @@ genius.verbose = False
 genius.remove_section_headers = False
 
 if len(sys.argv) > 1:
-    artist = sys.argv[1].replace('_', ' ')
+    artist = unquote(sys.argv[1].replace('_', ' '))
 else:
     print("No artist passed")
     sys.exit(2)
 
 if len(sys.argv) > 2:
-    title = sys.argv[2].replace('_', ' ')
+    title = unquote(sys.argv[2].replace('_', ' '))
 else:
     print("No song title passed")
     sys.exit(3)
